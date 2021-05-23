@@ -9,7 +9,7 @@ var checkUcaseAlphabet=false;
 var checkSpecial =false;
 var checkLcaseAlphabet= false;
 var checkNumeric =false;
-var charArray =" ";
+var charArray ="";
 var numberOfSelections =0;
 
 var getPasswordLength= function(){
@@ -29,8 +29,7 @@ var getPasswordLength= function(){
     alert(" Password length must be between 8-128 characters");
     getPasswordLength();
   }
-  
-
+  pwdLength =parseInt(pwdLength);
   console.log(pwdLength);
 };
 
@@ -45,21 +44,16 @@ var charactersToInclude =function(){
       alert("The password must include at least one character type");
       charactersToInclude();
     }
-
-    console.log(checkUcaseAlphabet);
-    console.log(checkNumeric);
-    console.log(checkSpecial);
-    console.log(checkLcaseAlphabet);
     
     if(checkUcaseAlphabet){
-       var ucaseStartIndex =charArray.length;
+      console.log(charArray.length);
+       var ucaseStartIndex = charArray.length;
       charArray =charArray.concat(alphabetArrayUpper);  
       var ucaseEndIndex=charArray.length-1;
       numberOfSelections +=1;
     }
     if(checkLcaseAlphabet){
       var lcaseStartIndex =charArray.length;
-
       charArray =charArray.concat(alphabetArrayLower);  
       var lcaseEndIndex=charArray.length-1;
 
@@ -78,45 +72,64 @@ var charactersToInclude =function(){
       charArray =charArray.concat(specialCharArray);
       var specialEndIndex=charArray.length-1;
       numberOfSelections+=1;
-
     }
-  
-    console.log(charArray);
+
     var checkedUcase =false;
     var checkedLcase =false;
-    var checkednum =false;
+    var checkedNum =false;
     var checkedSpecial =false;
 
-    for(var i=0; i<pwdLength-numberOfSelections;i++ ){
-      var index = Math.floor(Math.random() * charArray.length);
-      if (index>=ucaseStartIndex && index<=ucaseEndIndex && (!checkedUcase) && checkUcaseAlphabet)
+    for(var i=0; i<(pwdLength-numberOfSelections);i++ ){
+      var index =parseInt( Math.ceil(Math.random() * (charArray.length-1)));
+      if ((index>=ucaseStartIndex) && (index<=ucaseEndIndex) && (checkedUcase===false) && checkUcaseAlphabet)
       {
           numberOfSelections-=1;
           checkedUcase =true;
           
       }
-      if(index >=lcaseStartIndex && index <=lcaseEndIndex && (!checkedLcase) && checkLcaseAlphabet){
+      else if((index >=lcaseStartIndex) && (index <=lcaseEndIndex) && (checkedLcase===false) && checkLcaseAlphabet){
         numberOfSelections -=1;
         checkedLcase =true;
 
-        }
-      if(index >=lcaseStartIndex && index <=lcaseEndIndex && (!checkednum) && checkNumeric){
-          numberOfSelections -=1;
-          checkednum =true;
 
         }
-        if(index >=lcaseStartIndex && index <=lcaseEndIndex && (!checkedSpecial) &&checkSpecial){
+      else if((index >=numStartIndex) && (index <=numEndIndex) && (checkedNum===false) && checkNumeric){
+          numberOfSelections -=1;
+          checkedNum =true;
+
+        }
+      else if((index >=specialStartIndex)&& (index <=specialEndIndex) && (checkedSpecial===false) &&checkSpecial){
           numberOfSelections -=1;
           checkedSpecial =true;
 
         }
-
-
-      var alpha = charArray.charAt(index);    
-     
+      var alpha = charArray.charAt(index);         
       passwordEl += alpha;
     }
-
+    if ((checkedUcase===false) && checkUcaseAlphabet)
+    {
+       index= parseInt( Math.ceil(Math.random() * (alphabetArrayUpper.length-1)));
+       alpha = alphabetArrayUpper.charAt(index);
+       passwordEl+= alpha;
+    }
+    if ((checkedLcase===false) && checkLcaseAlphabet)
+    {
+       index= parseInt( Math.ceil(Math.random() * (alphabetArrayLower.length-1)));
+       alpha = alphabetArrayLower.charAt(index);
+       passwordEl+= alpha;
+    }
+    if ((checkedSpecial===false) && checkSpecial)
+    {
+       index= parseInt( Math.ceil(Math.random() * (specialCharArray.length-1)));
+       alpha = specialCharArray.charAt(index);
+       passwordEl+= alpha;
+    }
+    if ((checkedNum===false) && checkNumeric)
+    {
+       index= parseInt( Math.ceil(Math.random() * (numericArray.length-1)));
+       alpha = numericArray.charAt(index);
+       passwordEl+= alpha;
+    }
 
 };
  
@@ -126,7 +139,6 @@ var generatePassword =function(){
     getPasswordLength();
     charactersToInclude();
     //numberOfSelections =numberOfSelections-1;
-  
   return passwordEl;
   
 };
@@ -135,12 +147,10 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-
   var passwordText = document.querySelector("#password");
-    var password = generatePassword();
 
+  var password = generatePassword();
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
