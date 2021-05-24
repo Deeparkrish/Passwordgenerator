@@ -25,14 +25,14 @@ var charArray ="";
 //Function to get the length of password from user  
 var getPasswordLength= function(){
   //Ask for user input
-  pwdLength=window.prompt("Please enter a password length greater than 7 and less than 129");
+  pwdLength=window.prompt("Enter a password length least 8 characters and no more than 128 characters");
 
   // Check if its a number
   if ((isNaN(pwdLength)))
   {
-      alert("Please input numbers only ");
-      getPasswordLength();
-      return;
+    alert("Please input numbers only ");
+    getPasswordLength();
+    return;
   }
   // Check for negative values and null 
   else if (pwdLength=== null || pwdLength<=0 ) {
@@ -51,8 +51,8 @@ var getPasswordLength= function(){
   else if (((pwdLength*10)%(Math.floor(pwdLength)*10))!== 0)
   {
     alert("Password length cannot be a float, Please enter a whole number");
-      getPasswordLength();
-      return;
+    getPasswordLength();
+    return;
   }
   
   pwdLength =parseInt(pwdLength);
@@ -186,7 +186,7 @@ var charactersToInclude =function(){
 
 };
  
-// Initialize global variables 
+// Initialize  variables 
 var initializeValues =function()
 {
   passwordEl="";
@@ -197,8 +197,6 @@ var initializeValues =function()
   checkSpecial =false;
   checkLcaseAlphabet= false;
   checkNumeric =false;
-
-
 }
 //Generate password function
 var generatePassword =function(){
