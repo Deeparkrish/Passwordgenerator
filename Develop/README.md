@@ -1,7 +1,8 @@
 **Password Generator with starter code**
 
 **Purpose**
-An application that an employee can use to generate a random password based on criteria that user has selected. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript. 
+ An application that an employee can use to generate a random password based on criteria that user has selected.
+ This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript. 
 
 The following have been incorporated in this project in the Java script function :
   * When the user clicks the button to generate a password-  A prompt appears asking for the password length between 8-128 characters.
@@ -14,12 +15,13 @@ The following have been incorporated in this project in the Java script function
   * A final check is done to make sure that all the character types requested by the user occur atleast one in the password string. 
   * The generated password is returned to the main function as per the user requirement.
   * The password is written to the page.
+![image](https://user-images.githubusercontent.com/82689013/119292523-6dec6780-bc05-11eb-9d2a-cfbc3f013bb6.png)
 
 
 
 
 
-Built With
+**Built With**
 Java Script
 HTML
 CSS
