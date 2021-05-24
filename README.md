@@ -16,10 +16,12 @@ The following have been incorporated in this project in the Java script function
   * A final check is done to make sure that all the character types requested by the user occur atleast one in the password string. 
   * The generated password is returned to the main function as per the user requirement.
   * The password is written to the page.
+
+
+![image](https://github.com/Deeparkrish/Passwordgenerator/blob/main/IMG_5738.jpeg)
+
+
 ![image](https://user-images.githubusercontent.com/82689013/119292523-6dec6780-bc05-11eb-9d2a-cfbc3f013bb6.png)
-
-
-![image](file:///Users/deepakrishnan/Mycode/ChallengeRepo/Passwordgenerator/IMG_5738.jpeg)
 
 
 **Built With**
