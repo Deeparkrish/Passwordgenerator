@@ -6,7 +6,7 @@ var alphabetArrayUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 //Numbers 
 var numericArray= '0123456789';
 //Special characters as specified in README 
-var specialCharArray = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+var specialCharArray = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 //set password element to empy string 
 var passwordEl ="";
 //password length 
