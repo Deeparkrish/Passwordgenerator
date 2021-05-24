@@ -1,6 +1,7 @@
 **Password Generator with starter code**
 
-**Purpose**
+**Objective**
+
  An application that an employee can use to generate a random password based on criteria that user has selected.
  This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript. 
 
