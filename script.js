@@ -30,19 +30,29 @@ var getPasswordLength= function(){
   // Check if its a number
   if ((isNaN(pwdLength)))
   {
-      alert("Must input whole numbers");
+      alert("Please input numbers only ");
       getPasswordLength();
+      return;
   }
   // Check for negative values and null 
   else if (pwdLength=== null || pwdLength<=0 ) {
     alert("Please enter a valid length");
     getPasswordLength();
+    return;
   }
   // Check if  length is in the range of 8-128
   else if (pwdLength < 8 ||  pwdLength >128)
   {
     alert(" Password length must be between 7-129 characters");
     getPasswordLength();
+    return;
+  }
+  // Check if the user input a float value 
+  else if (((pwdLength*10)%(Math.floor(pwdLength)*10))!== 0)
+  {
+    alert("Password length cannot be a float, Please enter a whole number");
+      getPasswordLength();
+      return;
   }
   
   pwdLength =parseInt(pwdLength);
@@ -62,6 +72,7 @@ var charactersToInclude =function(){
   if (checkLcaseAlphabet === false && checkUcaseAlphabet===false && checkNumeric===false && checkSpecial ===false){
     alert("The password must include at least one character type");
     charactersToInclude();
+    return;
   }
     
   //Check what character types the user has chosen
@@ -175,8 +186,24 @@ var charactersToInclude =function(){
 
 };
  
+// Initialize global variables 
+var initializeValues =function()
+{
+  passwordEl="";
+  charArray="";
+  numberOfSelections =0;
+  pwdLength =0;
+  checkUcaseAlphabet=false;
+  checkSpecial =false;
+  checkLcaseAlphabet= false;
+  checkNumeric =false;
+
+
+}
 //Generate password function
 var generatePassword =function(){
+   //Initialize variables 
+   initializeValues();
     // Get the password length from user and validate 
     getPasswordLength();
     //Get the characters to be included ,validate and create a string of pwd
@@ -193,7 +220,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   passwordText.value="";
   var password = generatePassword();
-  passwordEl ="";  
   passwordText.value = password;
 }
 
